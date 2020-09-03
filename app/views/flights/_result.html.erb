@@ -1,0 +1,12 @@
+<%= form_with url: new_booking_path, method: 'get', local: true do |f| %>
+    <% @flights.each do |flight| %>
+        <%= 'FROM: ' %><%= flight.from_airport.code %><br>
+        <%= 'TO: ' %><%= flight.to_airport.code %><br>
+        <%= 'DATE: ' %><%= flight.start_time.strftime("%d/%m/%Y") %><br>
+        <%= 'TIME: ' %><%= flight.start_time.strftime('%H:%M') %><br>
+        <%= 'DURATION: ' %><%= flight.duration %><br>
+        <%= 'SELECT ' %><%= f.radio_button :flight_id, flight.id %><br><br>
+    <% end %>
+    <%= f.hidden_field 'tickets', :value => params[:num_tickets] %>
+    <%= f.submit 'Book' %>
+<% end %>

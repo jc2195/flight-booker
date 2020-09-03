@@ -1,0 +1,13 @@
+<div>Your booking: </div><br>
+<%= 'FROM: ' %><%= @booking.flight.from_airport.code %><br>
+<%= 'TO: ' %><%= @booking.flight.to_airport.code %><br>
+<%= 'DATE: ' %><%= @booking.flight.start_time.strftime("%d/%m/%Y") %><br>
+<%= 'TIME: ' %><%= @booking.flight.start_time.strftime('%H:%M') %><br>
+<%= 'DURATION: ' %><%= @booking.flight.duration %><br><br><br>
+
+<div>Passenger Details:</div><br>
+<% @booking.passengers.all.each do |passenger| %>
+    <%= 'NAME: ' %><%= passenger.name %><br>
+    <%= 'EMAIL: ' %><%= passenger.email %><br><br>
+<% end %>
+

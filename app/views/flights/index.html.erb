@@ -1,0 +1,16 @@
+<%= form_with(url: flights_path, method: "get", local: true) do %>
+  <%= label_tag :from_code, 'FROM' %>
+  <%= select_tag(:from_code, options_for_select(@airport_options)) %>
+  <%= label_tag :to_code, 'TO' %>
+  <%= select_tag(:to_code, options_for_select(@airport_options)) %>
+  <%= label_tag :num_tickets, 'PEOPLE' %>
+  <%= select_tag(:num_tickets, options_for_select(@passenger_options)) %>
+  <%= label_tag :date, 'DATE' %>
+  <%= select_tag(:date, options_for_select(@date_options)) %>
+  <%= submit_tag 'Submit' %>
+<% end %><br><br>
+
+<% if @flights.present? %>
+  <%= render 'result' %>
+<% end %>
+

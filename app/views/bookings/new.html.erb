@@ -1,0 +1,18 @@
+<%= form_with model: @booking, local: true do |f| %>
+    <%= 'Selected Flight:'%><br><br>
+    <%= 'FROM: ' %><%= @flight.from_airport.code %><br>
+    <%= 'TO: ' %><%= @flight.to_airport.code %><br>
+    <%= 'DATE: ' %><%= @flight.start_time.strftime("%d/%m/%Y") %><br>
+    <%= 'TIME: ' %><%= @flight.start_time.strftime('%H:%M') %><br>
+    <%= 'DURATION: ' %><%= @flight.duration %><br><br><br>
+    <div>Please Enter Passenger Details:</div><br>
+    <%= f.fields_for :passengers do |passengers_form| %>
+        <%= passengers_form.label :name, 'Name: '%>
+        <%= passengers_form.text_field :name %><br>
+        <%= passengers_form.label :email, 'Email: '%>
+        <%= passengers_form.text_field :email %><br><br>
+    <% end %>
+    <%= f.hidden_field 'flight_id', :value => @flight.id %>
+    <%= f.hidden_field 'tickets', :value => @tickets.to_i %>
+    <%= f.submit 'Submit Booking' %>
+<% end %>
