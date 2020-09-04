@@ -1,0 +1,9 @@
+Thank you for booking a flight with us, <%= @passenger.name %>
+==============================================================
+
+You have successfully booked your flight for <%= @passenger.booking.tickets %> person(s)
+from <%= @passenger.booking.flight.from_airport.code %> to <%= @passenger.booking.flight.to_airport.code %> on <%= @passenger.booking.flight.start_time.strftime("%d/%m/%Y") %> at <%= @passenger.booking.flight.start_time.strftime("%H:%M") %>.
+
+To view your booking, visit: <%= @url %>.
+
+Thanks for booking with us and have a safe flight!

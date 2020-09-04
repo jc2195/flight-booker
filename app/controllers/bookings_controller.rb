@@ -11,6 +11,9 @@ class BookingsController < ApplicationController
         booking_params[:passengers_attributes].each do |id, details|
             Passenger.create(details)
         end
+        @booking.passengers.each do |passenger|
+            PassengerMailer.with(passenger: passenger).confirmation_email.deliver_later
+        end
         redirect_to booking_path(@booking.id)
     end
 
